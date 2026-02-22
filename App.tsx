@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { AppView, Question } from './types';
 import CircuitSimulator from './components/CircuitSimulator';
 import { askProfessorSpark } from './services/geminiService';
-import { 
-  Zap, 
-  Lightbulb, 
-  Gamepad2, 
-  GraduationCap, 
-  ArrowRight, 
+import {
+  Zap,
+  Lightbulb,
+  Gamepad2,
+  GraduationCap,
+  ArrowRight,
   MessageCircle,
   BrainCircuit,
   Waves,
@@ -71,7 +71,7 @@ const App: React.FC = () => {
     if (index === QUIZ_QUESTIONS[currentQuestion].correctAnswer) {
       setQuizScore(prev => prev + 1);
     }
-    
+
     if (currentQuestion < QUIZ_QUESTIONS.length - 1) {
       setCurrentQuestion(prev => prev + 1);
     } else {
@@ -83,7 +83,7 @@ const App: React.FC = () => {
     <div className="min-h-screen pb-12">
       {/* Navigation Header */}
       <nav className="bg-white/80 backdrop-blur-md sticky top-0 z-50 border-b border-blue-100 px-6 py-4 flex justify-between items-center">
-        <div 
+        <div
           className="flex items-center gap-2 cursor-pointer group"
           onClick={() => setView(AppView.WELCOME)}
         >
@@ -92,21 +92,21 @@ const App: React.FC = () => {
           </div>
           <h1 className="text-2xl font-black text-blue-600 tracking-tight">VOLTAGE VOYAGER</h1>
         </div>
-        
+
         <div className="hidden md:flex items-center gap-6">
-          <button 
+          <button
             onClick={() => setView(AppView.LEARN)}
             className={`flex items-center gap-2 font-bold transition-colors ${view === AppView.LEARN ? 'text-blue-600' : 'text-slate-500 hover:text-blue-400'}`}
           >
             <Lightbulb size={20} /> Learn
           </button>
-          <button 
+          <button
             onClick={() => setView(AppView.EXPERIMENT)}
             className={`flex items-center gap-2 font-bold transition-colors ${view === AppView.EXPERIMENT ? 'text-blue-600' : 'text-slate-500 hover:text-blue-400'}`}
           >
             <Gamepad2 size={20} /> Experiment
           </button>
-          <button 
+          <button
             onClick={() => setView(AppView.QUIZ)}
             className={`flex items-center gap-2 font-bold transition-colors ${view === AppView.QUIZ ? 'text-blue-600' : 'text-slate-500 hover:text-blue-400'}`}
           >
@@ -117,7 +117,7 @@ const App: React.FC = () => {
 
       {/* Main Content */}
       <main className="max-w-5xl mx-auto px-6 pt-12">
-        
+
         {view === AppView.WELCOME && (
           <div className="flex flex-col md:flex-row items-center gap-12 animate-in fade-in duration-700">
             <div className="flex-1 space-y-6">
@@ -131,13 +131,13 @@ const App: React.FC = () => {
                 Ever wondered how a battery makes a lightbulb shine? It's all about the <strong>PUSH!</strong> Join Professor Spark to discover the magic of Voltage.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button 
+                <button
                   onClick={() => setView(AppView.LEARN)}
                   className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 flex items-center gap-2"
                 >
                   Start Learning <ArrowRight size={20} />
                 </button>
-                <button 
+                <button
                   onClick={() => setView(AppView.EXPERIMENT)}
                   className="px-8 py-4 bg-yellow-400 text-yellow-900 rounded-2xl font-bold text-lg hover:bg-yellow-500 transition-all shadow-lg hover:shadow-yellow-100 flex items-center gap-2"
                 >
@@ -147,9 +147,9 @@ const App: React.FC = () => {
             </div>
             <div className="flex-1 relative">
               <div className="w-full aspect-square bg-blue-100 rounded-[3rem] rotate-3 absolute top-0 left-0 -z-10"></div>
-              <img 
-                src="https://picsum.photos/seed/electricity/600/600" 
-                alt="Electric Spark Illustration" 
+              <img
+                src="https://picsum.photos/seed/electricity/600/600"
+                alt="Electric Spark Illustration"
                 className="rounded-[3rem] shadow-2xl relative z-10 border-8 border-white"
               />
               <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-3xl shadow-xl z-20 max-w-xs border-2 border-blue-100 animate-bounce">
@@ -175,8 +175,8 @@ const App: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">The Water Pipe</h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  Imagine electricity is like water in a pipe. 
-                  <strong> Voltage</strong> is like the <strong>Water Pressure</strong> or a pump. 
+                  Imagine electricity is like water in a pipe.
+                  <strong> Voltage</strong> is like the <strong>Water Pressure</strong> or a pump.
                   The more pressure (Voltage), the faster the water (Electricity) flows!
                 </p>
                 <ul className="space-y-2 text-sm font-semibold text-slate-500">
@@ -193,8 +193,8 @@ const App: React.FC = () => {
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">The Crowd Push</h3>
                 <p className="text-slate-600 mb-6 leading-relaxed">
-                  Imagine a group of people (Electrons) standing still. 
-                  A <strong>Voltage</strong> source is like a friendly giant <strong>pushing</strong> them from behind. 
+                  Imagine a group of people (Electrons) standing still.
+                  A <strong>Voltage</strong> source is like a friendly giant <strong>pushing</strong> them from behind.
                   A bigger push makes the crowd move faster!
                 </p>
                 <ul className="space-y-2 text-sm font-semibold text-slate-500">
@@ -216,16 +216,16 @@ const App: React.FC = () => {
                   <h3 className="text-3xl font-black">Ask Professor Spark!</h3>
                   <p className="text-blue-100 text-lg">Still confused? Ask me anything about voltage or electricity!</p>
                 </div>
-                
+
                 <form onSubmit={handleAskSpark} className="w-full flex flex-col md:flex-row gap-4">
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     value={userQuery}
                     onChange={(e) => setUserQuery(e.target.value)}
                     placeholder="E.g., Why do we need batteries?"
                     className="flex-1 px-6 py-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-md text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-yellow-400"
                   />
-                  <button 
+                  <button
                     type="submit"
                     disabled={aiLoading}
                     className="px-8 py-4 bg-yellow-400 text-yellow-900 rounded-2xl font-bold hover:bg-yellow-300 transition-all disabled:opacity-50"
@@ -241,9 +241,9 @@ const App: React.FC = () => {
                 )}
               </div>
             </div>
-            
+
             <div className="text-center pt-8">
-              <button 
+              <button
                 onClick={() => setView(AppView.EXPERIMENT)}
                 className="px-10 py-5 bg-slate-900 text-white rounded-[2rem] font-bold text-xl hover:bg-slate-800 transition-all flex items-center gap-3 mx-auto"
               >
@@ -260,14 +260,14 @@ const App: React.FC = () => {
                 <h2 className="text-4xl font-black text-slate-900">Voltage Lab</h2>
                 <p className="text-lg text-slate-600">Experiment with batteries to see the 'push' in action!</p>
               </div>
-              <button 
+              <button
                 onClick={() => setView(AppView.LEARN)}
                 className="flex items-center gap-2 text-blue-600 font-bold hover:underline"
               >
                 <ChevronLeft size={20} /> Back to Learning
               </button>
             </div>
-            
+
             <CircuitSimulator />
 
             <div className="bg-yellow-50 p-8 rounded-[2.5rem] border-4 border-yellow-100 flex flex-col md:flex-row gap-8 items-center">
@@ -309,10 +309,10 @@ const App: React.FC = () => {
                     Question {currentQuestion + 1} of {QUIZ_QUESTIONS.length}
                   </div>
                 </div>
-                
+
                 <div className="p-10 space-y-8">
                   <div className="w-full bg-slate-100 h-3 rounded-full overflow-hidden">
-                    <div 
+                    <div
                       className="h-full bg-yellow-400 transition-all duration-500"
                       style={{ width: `${((currentQuestion + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
                     ></div>
@@ -347,20 +347,20 @@ const App: React.FC = () => {
                   <h3 className="text-4xl font-black text-slate-900">You Finished!</h3>
                   <p className="text-2xl font-bold text-blue-600">You scored {quizScore} out of {QUIZ_QUESTIONS.length}!</p>
                   <p className="text-slate-600 text-lg">
-                    {quizScore === QUIZ_QUESTIONS.length 
-                      ? "Incredible! You are a true Voltage Voyager!" 
+                    {quizScore === QUIZ_QUESTIONS.length
+                      ? "Incredible! You are a true Voltage Voyager!"
                       : "Great effort! Science takes practice. Try again?"}
                   </p>
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <button 
+                  <button
                     onClick={resetQuiz}
                     className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition-all"
                   >
                     Try Again
                   </button>
-                  <button 
+                  <button
                     onClick={() => setView(AppView.WELCOME)}
                     className="px-8 py-4 bg-slate-100 text-slate-600 rounded-2xl font-bold hover:bg-slate-200 transition-all"
                   >
@@ -376,7 +376,7 @@ const App: React.FC = () => {
 
       {/* Footer Branding */}
       <footer className="mt-20 text-center text-slate-400 font-medium">
-        <p>© 2024 Voltage Voyager • Designed for KS2 Scientists</p>
+        <p>© 2026 Voltage Voyager • Designed for KS2 Scientists</p>
       </footer>
     </div>
   );
