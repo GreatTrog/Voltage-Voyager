@@ -1,0 +1,7 @@
+{
+  "name": "Voltage Voyager: The Power of the Push",
+  "description": "An interactive educational app for KS2 students to learn about voltage as the 'push' in electrical circuits through simulations, metaphors, and AI-powered explanations.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
